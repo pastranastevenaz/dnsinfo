@@ -1,0 +1,70 @@
+<style scoped>
+footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   /*height:3em;*/
+   width:100%;
+   background:#222 !important;
+   -webkit-box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.75);
+
+}
+#copyright-container{
+  padding-top: .0em;
+  padding-bottom: 1em;
+  /*margin-left: 1em;*/
+  /*margin-right: 1em;*/
+}
+
+/* IE 6 */
+* html footer {
+   position:absolute;
+   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}
+#gh-logo{
+  height:30px;
+  margin-bottom: 10px;
+}
+a {
+  color: #fff !important;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn, .btn-large {
+  text-decoration: none;
+  color: #333;
+  background-color: #eee;
+  text-align: center;
+  letter-spacing: .5px;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+  cursor: pointer;
+}
+.btn:hover, .btn-large:hover {
+  background-color: #ddd;
+}
+
+input, select, textarea{
+    color: #fff;
+}
+
+textarea:focus, input:focus {
+    color: #fff;
+}
+</style>
+<footer class="page-footer">
+  <!-- <div class="footer-copyright"> -->
+    <div id="copyright-container" class="container">
+      <!-- <center> -->
+      <a href="#">
+        <span class="nova">© 2017 Steven Antonio</span>
+      </a>
+      <a class="right" href="#!">
+        <img id="gh-logo" src="../static/img/gh.png">
+      </a>
+    <!-- </center> -->
+    </div>
+  <!-- </div> -->
+</footer>

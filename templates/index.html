@@ -1,0 +1,233 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style scoped>
+@media (max-width: 420px) {
+  body{
+    /*background-color: white;*/
+  }
+  #dns-search-component{
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+    margin-bottom: 6%;
+  }
+  #dns-info-component{
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+    margin-bottom: 15% !important;
+  }
+}
+.row{
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 100% !important;
+  font: inherit !important;
+  vertical-align: baseline !important;
+}
+hr{
+  color: #ddd;
+}
+#index-title{
+  color: #eee;
+}
+h1{
+  color: #fff;
+}
+#dns-search-component{
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 6%;
+}
+#lookup-button{
+  width: 100%;
+}
+.input-field textarea:focus + label {
+  color: #2196f3 !important;
+}
+.btn:active{
+ background-color: #ddd !important;
+}
+.btn:focus{
+  background-color: #ddd !important;
+}
+.btn:visited{
+  background-color: #ddd !important;
+}
+#dns-info-component{
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 15%;
+}
+.dns-title{
+  color: #eee;
+  font-size: 1.5em;
+}
+.record-title{
+  color: #eee;
+  font-size: 1.3em;
+}
+.dns-header{
+  color: #ddd;
+  font-size: 1.1em;
+}
+.dns-value{
+  color: #ddd;
+  font-size: 1em;
+}
+</style>
+<br>
+<center>
+<h3 id="index-title" class="nova">DNS Lookup</h3>
+</center>
+
+<div id="dns-search-component">
+  <form action="/dnsshow" method="POST">
+    <label class="nova" for="domain">Domain</label>
+    <input class="nova" placeholder="mydomain.com" name="domain" id="domain" type="text" class="validate">
+    <input id="lookup-button" class="btn nova" type="submit" value="Lookup">
+  </form>
+</div>
+<center><div class="dns-title nova">{{ domain }}</div></center>
+<div id="dns-info-component">
+
+  <div id="a-records">
+    {% if all_a_records|length > 0 %}
+    <div class="record-title">@ Records: {{all_a_records|length}} </div>
+    <div class="row">
+      <div class="col s6"><span class="nova dns-header">Value</span></div>
+      <div class="col s3"><span class="nova dns-header">TTL</span></div>
+      <div class="col s3"><span class="nova dns-header">Type</span></div>
+    </div>
+      {% for v in all_a_records %}
+      <div class="row">
+        <div class="col s6"><span class="mono dns-value"><b>{{ v['value']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['ttl']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['type']}}</b></span></div>
+      </div>
+      {% endfor %}
+      <hr>
+    {% endif %}
+  </div>
+
+
+  <div id="aaaa-records">
+    {% if all_aaaa_records|length > 0 %}
+    <div class="record-title">AAAA Records: {{all_aaaa_records|length}} </div>
+    <div class="row">
+      <div class="col s6"><span class="nova dns-header">Value</span></div>
+      <div class="col s3"><span class="nova dns-header">TTL</span></div>
+      <div class="col s3"><span class="nova dns-header">Type</span></div>
+    </div>
+      {% for v in all_aaaa_records %}
+      <div class="row">
+        <div class="col s6"><span class="mono dns-value"><b>{{ v['value']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['ttl']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['type']}}</b></span></div>
+      </div>
+      {% endfor %}
+      <hr>
+    {% endif %}
+  </div>
+
+
+  <div id="mx-records">
+    {% if all_mx_records|length > 0 %}
+    <div class="record-title">MX Records: {{all_mx_records|length}} </div>
+    <div class="row">
+      <div class="col s6"><span class="nova dns-header">Value</span></div>
+      <div class="col s3"><span class="nova dns-header">TTL</span></div>
+      <div class="col s3"><span class="nova dns-header">Type</span></div>
+    </div>
+      {% for v in all_mx_records %}
+      <div class="row">
+        <div class="col s6"><span class="mono dns-value"><b>{{ v['value']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['ttl']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['type']}}</b></span></div>
+      </div>
+      {% endfor %}
+      <hr>
+    {% endif %}
+  </div>
+
+
+  <div id="cn-records">
+    {% if all_cn_records|length > 1 %}
+    <div class="record-title">CNAME Records: {{all_cn_records|length -1}} </div>
+    <div class="row">
+      <div class="col s6"><span class="nova dns-header">Value</span></div>
+      <div class="col s3"><span class="nova dns-header">TTL</span></div>
+      <div class="col s3"><span class="nova dns-header">Type</span></div>
+    </div>
+      {% for v in all_cn_records %}
+      <div class="row">
+        <div class="col s6"><span class="mono dns-value"><b>{{ v['value']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['ttl']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['type']}}</b></span></div>
+      </div>
+      {% endfor %}
+      <hr>
+    {% endif %}
+  </div>
+
+
+  <div id="soa-records">
+    {% if all_soa_records|length > 0 %}
+    <div class="record-title">SOA Records: {{all_soa_records|length}} </div>
+    <div class="row">
+      <div class="col s6"><span class="nova dns-header">Value</span></div>
+      <div class="col s3"><span class="nova dns-header">TTL</span></div>
+      <div class="col s3"><span class="nova dns-header">Type</span></div>
+    </div>
+      {% for v in all_soa_records %}
+      <div class="row">
+        <div class="col s6"><span class="mono dns-value"><b>{{ v['value']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['ttl']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{ v['type']}}</b></span></div>
+      </div>
+      {% endfor %}
+      <hr>
+    {% endif %}
+  </div>
+
+
+  <div id="txt-records">
+    {% if all_txt_records|length > 0 %}
+    <div class="record-title">TXT Records: {{all_txt_records|length}} </div>
+    <div class="row">
+      <div class="col s6"><span class="nova dns-header">Value</span></div>
+      <div class="col s3"><span class="nova dns-header">TTL</span></div>
+      <div class="col s3"><span class="nova dns-header">Type</span></div>
+    </div>
+      {% for v in all_txt_records %}
+      <div class="row">
+        <div class="col s6"><span class="mono dns-value"><b>{{ v['value']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['ttl']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['type']}}</b></span></div>
+      </div>
+      {% endfor %}
+      <hr>
+    {% endif %}
+  </div>
+
+
+  <div id="ns-records">
+    {% if all_ns_records|length > 0 %}
+    <div class="record-title">NameServers: {{all_ns_records|length}} </div>
+    <div class="row">
+      <div class="col s6"><span class="nova dns-header">Value</span></div>
+      <div class="col s3"><span class="nova dns-header">TTL</span></div>
+      <div class="col s3"><span class="nova dns-header">Type</span></div>
+    </div>
+      {% for v in all_ns_records %}
+      <div class="row">
+        <div class="col s6"><span class="mono dns-value"><b>{{ v['value']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['ttl']}}</b></span></div>
+        <div class="col s3"><span class="mono dns-value"><b>{{ v['type']}}</b></span></div>
+      </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

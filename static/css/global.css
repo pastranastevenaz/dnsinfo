@@ -1,0 +1,8 @@
+@import url(https://fonts.googleapis.com/css?family=Nova+Round);
+@import url(https://fonts.googleapis.com/css?family=Cutive+Mono);
+.nova{
+  font-family: 'Nova Round', cursive;
+}
+.mono{
+  font-family: 'Cutive Mono', monospace;
+}

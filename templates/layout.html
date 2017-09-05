@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<script type="text/javascript">
+    var isshow = localStorage.getItem('isshow');
+    if (isshow== null) {
+        localStorage.setItem('isshow', 1);
+
+        // Show popup here
+        alert("Alert! Site is not optimized for mobile display!")
+      };
+</script>
+<html>
+  <head>
+    <title>TBP</title>
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#1976D2">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#1976D2">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1976D2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"> -->
+    <link href="{{ url_for('static', filename='css/materialize.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/global.css') }}" rel="stylesheet">
+    <!-- MATERIAL ICONS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style type="text/css">
+      .container {
+        max-width: 500px;
+        padding-top: 100px;
+      }
+      .flashes{
+        color: red;
+      }
+      h2 {
+        color: red;
+      }
+      body{
+        background-color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'header.html' %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <center><li>{{ message }}</li></center>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% include 'footer.html' %}
+
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+    <!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
+    <script>
+      $( document ).ready(function(){
+        $(".button-collapse").sideNav();
+        $('ul.tabs').tabs();
+        $('.modal').modal();
+        $('.datepicker').pickadate({
+           selectMonths: true, // Creates a dropdown to control month
+           selectYears: 15, // Creates a dropdown of 15 years to control year,
+           today: 'Today',
+           clear: 'Clear',
+           close: 'Ok',
+           closeOnSelect: false // Close upon selecting a date,
+         });
+         $('.timepicker').pickatime({
+           default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+           fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+           twelvehour: false, // Use AM/PM or 24-hour format
+           donetext: 'OK', // text for done-button
+           cleartext: 'Clear', // text for clear-button
+           canceltext: 'Cancel', // Text for cancel-button
+           autoclose: false, // automatic close timepicker
+           ampmclickable: true, // make AM PM clickable
+           aftershow: function(){} //Function for after opening timepicker
+         });
+      })
+    </script>
+
+  </body>
+</html>
