@@ -37,6 +37,13 @@
       }
 
     </style>
+    <br>
+    <div class="links-container">
+      <div class="links right nova">
+        <a class="active" href="{{url_for('index')}}">DNS Lookup</a> <span id="link-pipe" class="white-font">  |  </span> <a href="{{url_for('myip')}}">My IP Address</a>
+      </div>class="active"
+    </div>
+    <br><br></br>
     <div id="dnssearch" class="">
       <form action="/dnsshow" method="POST">
         <!-- <input name="domain"> -->

@@ -6,3 +6,28 @@
 .mono{
   font-family: 'Cutive Mono', monospace;
 }
+
+
+.white-font{
+  color: #fff;
+}
+hr{
+  width: 60%;
+}
+
+.links-container{
+  margin-right: 20%;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+}
+.links{
+  font-size: 1.3em;
+}
+#link-pipe{
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.active{
+  border-bottom: solid;
+  border-bottom-width: medium;
+}

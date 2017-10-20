@@ -2,7 +2,7 @@ import os
 import requests
 import sys
 import json
-from flask import Flask, request, render_template, url_for, flash, session, redirect
+from flask import Flask, request, render_template, url_for, flash, session, redirect, jsonify
 from timeit import default_timer as timer
 
 app=Flask(__name__)
@@ -103,6 +103,14 @@ def dnsshow():
             print(str(e))
             return redirect(url_for(index))
 
+@app.route('/myip')
+def myip():
+    visitorip = request.remote_addr
+    visitoripjson = jsonify({'ip': request.remote_addr}), 200
+    # return visitorip
+    return render_template('myip.html',
+        visitorip = visitorip)
+
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 4000))
+    port = int(os.environ.get("PORT", 8000))
     app.run(host='0.0.0.0', port=port, debug=True)

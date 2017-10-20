@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+@media (max-width: 420px) {
+  body{
+    /*background-color: white;*/
+  }
+  #dns-search-component{
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+    margin-bottom: 6%;
+  }
+  #dns-info-component{
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+    margin-bottom: 15% !important;
+  }
+}
+.row{
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 100% !important;
+  font: inherit !important;
+  vertical-align: baseline !important;
+}
+hr{
+  color: #ddd;
+}
+#index-title{
+  color: #eee;
+}
+h1{
+  color: #fff;
+}
+#dns-search-component{
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 6%;
+}
+#lookup-button{
+  width: 100%;
+}
+.input-field textarea:focus + label {
+  color: #2196f3 !important;
+}
+.btn:active{
+ background-color: #ddd !important;
+}
+.btn:focus{
+  background-color: #ddd !important;
+}
+.btn:visited{
+  background-color: #ddd !important;
+}
+#dns-info-component{
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 15%;
+}
+.dns-title{
+  color: #eee;
+  font-size: 1.5em;
+}
+.record-title{
+  color: #eee;
+  font-size: 1.3em;
+}
+.dns-header{
+  color: #ddd;
+  font-size: 1.1em;
+}
+.dns-value{
+  color: #ddd;
+  font-size: 1em;
+}
+#ip-text{
+  font-size: 2em;
+}
+
+</style>
+<br>
+<div class="links-container">
+  <div class="links right nova">
+    <a href="{{url_for('index')}}">DNS Lookup</a> <span id="link-pipe" class="white-font">  |  </span> <a class="active"  href="{{url_for('myip')}}">My IP Address</a>
+  </div>
+</div>
+<br><br></br>
+<center>
+<h3 id="index-title" class="nova">What's my IP Address?</h3>
+</center>
+<br>
+<hr>
+<br>
+<center><div class="dns-title nova">{{ domain }}</div></center>
+<div id="dns-info-component">
+
+<center><p id="ip-text" class="nova white-font">Your IP address is: {{ visitorip }}</p></center>
+</div>
+
+{% endblock %}
