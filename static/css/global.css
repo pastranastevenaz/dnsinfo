@@ -29,5 +29,5 @@ hr{
 }
 .active{
   border-bottom: solid;
-  border-bottom-width: medium;
+  border-bottom-width: thin;
 }

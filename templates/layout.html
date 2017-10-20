@@ -69,6 +69,15 @@
         $(".button-collapse").sideNav();
         $('ul.tabs').tabs();
         $('.modal').modal();
+        // COD FOR THE THEME SWITCH
+        $("#theme-checkbox").change(function() {
+          if($(this).is(":checked")) {
+            console.log("Is checked");
+          }
+          else {
+            console.log("Is Not checked");
+          }
+        });
         $('.datepicker').pickadate({
            selectMonths: true, // Creates a dropdown to control month
            selectYears: 15, // Creates a dropdown of 15 years to control year,
