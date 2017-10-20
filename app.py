@@ -4,9 +4,12 @@ import sys
 import json
 from flask import Flask, request, render_template, url_for, flash, session, redirect, jsonify
 from timeit import default_timer as timer
+from werkzeug.contrib.fixers import ProxyFix
 
 app=Flask(__name__)
 app.secret_key = "secret_key"
+app.wsgi_app = ProxyFix(app.wsgi_app)
+
 
 @app.route("/")
 def index():
