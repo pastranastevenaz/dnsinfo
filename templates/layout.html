@@ -44,7 +44,7 @@
       }
     </style>
   </head>
-  <body>
+  <body id="body-selector">
     {% include 'header.html' %}
     {% with messages = get_flashed_messages() %}
       {% if messages %}
@@ -69,15 +69,57 @@
         $(".button-collapse").sideNav();
         $('ul.tabs').tabs();
         $('.modal').modal();
+
+
+
+
         // COD FOR THE THEME SWITCH
         $("#theme-checkbox").change(function() {
           if($(this).is(":checked")) {
             console.log("Is checked");
+            // HEADER
+            document.getElementById("nav-area").style.backgroundColor = "#222";
+            document.getElementsByTagName("a")[0].style.color = "#555";
+            var x = document.getElementById("logo");
+            x.style.color = "#fff";
+            // document.querySelectorAll('a.').style.fontColor("#fff");
+            var b = document.getElementById("body-selector");
+            b.style.backgroundColor = "#333";
+            var x = document.getElementById("footer-selector");
+            x.style.backgroundColor = "#222";
+            var x = document.getElementById("cprt");
+            x.style.color = "#fff";
+            var x = document.getElementById("gh-logo");
+            x.style.color = "#fff";
+            var l = document.getElementById("gh-logo");
+            l.src = "../static/img/gh.png";
+            var x = document.getElementById("lookup-button");
+            x.style.backgroundColor = "#fff";
           }
           else {
             console.log("Is Not checked");
+            // HEADER
+            document.getElementById("nav-area").style.backgroundColor = "#fff";
+            document.getElementsByTagName("a")[0].style.color = "#555";
+            var x = document.getElementById("logo");
+            x.style.color = "#84C7C1";
+            // document.querySelectorAll('a.').style.fontColor("#222");
+            var b = document.getElementById("body-selector");
+            b.style.backgroundColor = "#fff";
+            var x = document.getElementById("footer-selector");
+            x.style.backgroundColor = "#fff";
+            var x = document.getElementById("cprt");
+            x.style.color = "#444";
+            var l = document.getElementById("gh-logo");
+            l.src = "../static/img/ghg.png";
+            var x = document.getElementById("lookup-button");
+            x.style.backgroundColor = "#333";
           }
         });
+
+
+
+
         $('.datepicker').pickadate({
            selectMonths: true, // Creates a dropdown to control month
            selectYears: 15, // Creates a dropdown of 15 years to control year,

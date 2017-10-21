@@ -5,7 +5,7 @@ footer {
    bottom:0px;
    /*height:3em;*/
    width:100%;
-   background:#222 !important;
+   background:#222;
    -webkit-box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.75);
     box-shadow: 0px -3px 10px 0px rgba(0,0,0,0.75);
@@ -27,11 +27,7 @@ footer {
   height:30px;
   margin-bottom: 10px;
 }
-a {
-  color: #fff !important;
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-}
+
 .btn, .btn-large {
   text-decoration: none;
   color: #333;
@@ -54,12 +50,12 @@ textarea:focus, input:focus {
     color: #fff;
 }
 </style>
-<footer class="page-footer">
+<footer id="footer-selector" class="page-footer">
   <!-- <div class="footer-copyright"> -->
     <div id="copyright-container" class="container">
       <!-- <center> -->
       <a href="#">
-        <span class="nova"><a href="https://stevenanton.io">© 2017 Steven Antonio</a></span>
+        <span class="nova"><a id="cprt" href="https://stevenanton.io">© 2017 Steven Antonio</a></span>
       </a>
       <a class="right" href="https://github.com/pastranastevenaz/dnsinfo">
         <img id="gh-logo" src="../static/img/gh.png">

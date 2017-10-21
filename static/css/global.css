@@ -7,7 +7,11 @@
   font-family: 'Cutive Mono', monospace;
 }
 
-
+a {
+  color: #fff;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
 .white-font{
   color: #fff;
 }
